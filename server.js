@@ -14,6 +14,7 @@ const token = process.env.ASTRA_TOKEN
 app.get('/', (req,res)=> {
   res.send('app is running')
 })
+
 app.get('/tickets', async(req,res)=> {
   const options = {
         method: 'GET',
