@@ -44,16 +44,19 @@ export default function TicketPage({editMode}) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (editMode) {
-      const response = await axios.put(`http://localhost:8000/tickets/${id}`, {
-        data: formData,
-      })
+      const response = await axios.put(
+        `https://ticketcrm.herokuapp.com/tickets/${id}`,
+        {
+          data: formData,
+        }
+      )
       const success = response.status === 200
       if (success) {
         navigate('/')
       }
     }
     if (!editMode) {
-      const response = await axios.post('http://localhost:8000/tickets', {
+      const response = await axios.post('https://ticketcrm.herokuapp.com/tickets', {
         formData,
       })
       const success = response.status === 200
@@ -64,7 +67,9 @@ export default function TicketPage({editMode}) {
   }
 
   const fetchData = async () => {
-    const response = await axios.get(`http://localhost:8000/tickets/${id}`)
+    const response = await axios.get(
+      `https://ticketcrm.herokuapp.com/tickets/${id}`
+    )
     setFormData(response.data.data)
   }
  

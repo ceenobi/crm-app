@@ -33,6 +33,7 @@ export default function Dashboard() {
     setCategories([...new Set(tickets?.map(({category})=>category))])
   }, [tickets, setCategories])
 
+
   const colors = ['#BB6464', '#346751', '#C84B31', '#ECDBBA']
 
   const uniqueCategories = [
