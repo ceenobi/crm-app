@@ -43,7 +43,7 @@ export default function Dashboard() {
   return (
     <Box p={5} w='100%'>
       <Box textStyle='h1'>My Projects</Box>
-      <Box h='80vh' overflowX='scroll' mt={4}>
+      <Box h='80vh' overflow='scroll' mt={4}>
         {tickets &&
           uniqueCategories?.map((uniqueCategory, categoryIndex) => (
             <Box key={categoryIndex} mb={4}>

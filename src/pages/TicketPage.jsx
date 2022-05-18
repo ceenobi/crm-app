@@ -16,7 +16,7 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { RenderIf } from '../components/RenderIf'
-import { FormInput, RangeInput } from '../helpers/FormProps'
+import {FormInput} from '../helpers/FormProps'
 import categoriesContext from '../Context'
 
 export default function TicketPage({editMode}) {
@@ -162,7 +162,6 @@ export default function TicketPage({editMode}) {
                         value={option}
                         id='priority-1'
                         onChange={handleChange}
-                        // checked={formData.priority == 1}
                       >
                         {option}
                       </Radio>
@@ -173,13 +172,18 @@ export default function TicketPage({editMode}) {
 
               {editMode && (
                 <>
-                  <FormControl mb={2}>                
-                    <RangeInput
-                      label='Progress'
-                      name='progress'
+                  <FormControl mb={2}>
+                    <FormInput
                       id='progress'
-                      //value={formData.progress}
+                      type='range'
+                      min='0'
+                      max='100'
+                      name='progress'
+                      label='progress'
+                      variant='unstyled'
+                      required
                       onChange={handleChange}
+                      value={formData.progress}
                     />
                   </FormControl>
                   <FormControl>
