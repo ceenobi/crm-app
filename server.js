@@ -1,4 +1,3 @@
-const PORT = 8000
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
@@ -11,18 +10,15 @@ app.use(express.json())
 const url = process.env.URL
 const token = process.env.ASTRA_TOKEN
 
-app.get('/', (req,res)=> {
-  res.send('app is running')
-})
 
-app.get('/tickets', async(req,res)=> {
-  const options = {
-        method: 'GET',
-        headers : {
-            Accepts: 'application/json',
-            'X-Cassandra-Token': token,
-        }
-    }
+app.get('/tickets', async(req,res) => {
+ const options = {
+   method: 'GET',
+   headers: {
+     Accepts: 'application/json',
+     'X-Cassandra-Token': token,
+   },
+ }
     try {
       const response = await axios(`${url}?page-size=20`, options)
       res.status(200).json(response.data)
@@ -112,4 +108,9 @@ app.delete('/tickets/:documentId', async (req,res)=>{
     }
 })
 
-app.listen(PORT, () => console.log('server running on ' + PORT))
+app.get('/', (req,res)=> {
+  res.send('app is running')
+})
+
+const PORT = process.env.PORT || 8000
+app.listen(PORT, console.log(`server running port ${PORT}`))
